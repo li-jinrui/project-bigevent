@@ -43,12 +43,11 @@ $(function () {
       success: function (res) {
         console.log($("#form_reg [name=username]").val());
         if (res.status !== 0) {
-          return alert("注册失败");
+          return layer.msg(res.message);
         }
         layer.msg("注册成功，请登录！");
         $("#link_login").click();
-        console.log(res);
-        console.log(1);
+        // console.log(res);
       },
     });
   });
@@ -63,12 +62,15 @@ $(function () {
         password: $("#form_login [name='password']").val(),
       },
       success: function (res) {
-        console.log("登录");
         if (res.status !== 0) {
           return alert("登录失败");
         }
-
-        console.log(res);
+        layer.msg("登录成功！");
+        // 将登录成功得到的 token 字符串，保存到 localStorage 中
+        localStorage.setItem("token", res.token);
+        // 跳转到后台主页
+        location.href = "/index.html";
+        // console.log(res);
       },
     });
   });
