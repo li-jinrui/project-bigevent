@@ -47,7 +47,6 @@ $(function () {
         }
         layer.msg("注册成功，请登录！");
         $("#link_login").click();
-        // console.log(res);
       },
     });
   });
@@ -63,14 +62,13 @@ $(function () {
       },
       success: function (res) {
         if (res.status !== 0) {
-          return alert("登录失败");
+          return layer.msg("登录失败！");
         }
         layer.msg("登录成功！");
         // 将登录成功得到的 token 字符串，保存到 localStorage 中
         localStorage.setItem("token", res.token);
         // 跳转到后台主页
         location.href = "/index.html";
-        // console.log(res);
       },
     });
   });
