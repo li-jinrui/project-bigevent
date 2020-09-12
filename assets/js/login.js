@@ -68,7 +68,7 @@ $(function () {
           return alert("登录失败");
         }
 
-        console.log(resn);
+        console.log(res);
       },
     });
   });
